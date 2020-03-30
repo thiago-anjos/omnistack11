@@ -1,0 +1,57 @@
+// recurso geralmente está associado a uma tabela do banco ou uma entidade
+
+// app.get significa que essa rota é acessível através de um método http get
+// get é para buscar uma informação 
+// post para criar uma informação no backend
+// put alterar uma informação no backend
+// delete ... deletar uma informação no backend
+
+/*
+*** tipos de parametros
+
+query params: Parametros nomeados enviados na rota após o simbolo de ? e servem para filtros, paginacao
+/users?name=Thiago
+
+route params: parametros utilizandos para identificar recursos
+
+exemplo: /users/:id
+para acessar ... 
+const paramentros = request.params;
+console.log(parametros)
+
+/users/:id
+body da requisição : request body : corpo da requisição, utilizado para criar ou alterar recursos
+
+*/
+
+// npm install nodemon -D
+// salva o nodemon como uma dependencia de desenvolvimento e não da aplicação
+
+//Depois alterar o arquivo package.json:
+
+//"start": "nodemon src/index.js"
+
+
+// banco de dados SQL (SQL é uma linguagem universal) ... mysql, sqlite, postgreeSql, oracle, microsoft sql server
+// nosql: mongodb, couchdb
+
+// driver do banco de dados
+// select * from users
+// query builder: table('users').select('*').where()
+// knex ... query builder utilizando dentro do node
+// npm install knex
+// npm install sqlite3
+// npx ( executa um pacote ao invés de instalar ): npx knex init
+
+// Entidades pode ser tudo aquilo que salvamos no banco de dados
+existe uma entidade chamada ong: fazer login, cadastros
+a ong cadastra casos (incidents) que também precisam ser armazenados no banco de dados
+entidades:  ong, incident
+funcionalidades das entidades: 
+ONG: login de ong, cadastro de ong, logout, cadastro de novos casos, deletar novos casos, listar os casos especificos de uma ong, 
+listar todos os casos, entrar em contato com a ong, 
+
+criando primeira entidade pelo knex: 
+1) npx knex migrate:make create_ongs
+2) configurar a criação da tabela dentro do arquivo gerado depois do passo 1
+3) executar a migration para criar a tabela: npx knex migrate:latest
